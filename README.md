@@ -225,4 +225,60 @@ Todos los endpoints de películas están disponibles en `http://localhost:3000/a
 ```
 
 ### Crear una Película
-``` 
+```json
+{
+  "nombre": "Matrix",
+  "descripcion": "Una película revolucionaria que cambió el género de ciencia ficción y redefinió los efectos visuales en el cine",
+  "sinapsis": "En un futuro distópico, Thomas Anderson, un programador conocido como Neo, descubre que la realidad que conocemos es una simulación digital llamada Matrix. Junto a un grupo de rebeldes liderados por Morpheus, Neo se embarca en una lucha contra las máquinas que controlan esta realidad virtual, mientras descubre su papel como 'El Elegido' que podría liberar a la humanidad",
+  "categoriaId": 1
+}
+```
+
+### Actualizar una Película
+```json
+{
+  "nombre": "The Matrix",
+  "descripcion": "La obra maestra que revolucionó el cine de ciencia ficción, ganadora de cuatro premios Oscar",
+  "sinapsis": "Thomas Anderson lleva una doble vida: durante el día es un programador en una respetable empresa de software, pero por las noches es un hacker conocido como Neo. Su vida da un giro radical cuando Morpheus le revela que el mundo que conoce es solo una simulación computarizada creada por máquinas sentientes para esclavizar a la humanidad. Como 'El Elegido', Neo debe liderar la resistencia para liberar a la humanidad de esta prisión digital",
+  "categoriaId": 1
+}
+```
+
+### Respuestas de ejemplo
+
+#### Respuesta exitosa al crear una película
+```json
+{
+  "id": 1,
+  "nombre": "Matrix",
+  "descripcion": "Una película revolucionaria que cambió el género de ciencia ficción y redefinió los efectos visuales en el cine",
+  "sinapsis": "En un futuro distópico, Thomas Anderson, un programador conocido como Neo, descubre que la realidad que conocemos es una simulación digital llamada Matrix...",
+  "categoria": {
+    "id": 1,
+    "nombre": "Ciencia Ficción",
+    "descripcion": "Películas que exploran conceptos científicos, tecnológicos y sus implicaciones en la sociedad"
+  }
+}
+```
+
+#### Respuesta de error por campos faltantes
+```json
+{
+  "mensaje": "Error de validación",
+  "errores": [
+    "El nombre es requerido",
+    "La descripción es requerida",
+    "La sinopsis es requerida",
+    "La categoría es requerida"
+  ]
+}
+```
+
+#### Respuesta de error por categoría inexistente
+```json
+{
+  "mensaje": "Error de validación",
+  "errores": [
+    "La categoría con ID 999 no existe"
+  ]
+} 
